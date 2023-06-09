@@ -26,5 +26,5 @@ https://rocket.srv.br/apps/embebedar?source=youtube&id=dQw4w9WgXcQ
 
 ## Autor
 
-| [<img src="https://avatars.githubusercontent.com/u/4672934?v=4" width="155"><br><sub>@tihhgoncalves</sub><br><sub>https://t.me/tihhgoncalves</sub>](https://github.com/tihhgoncalves) |
+| [<img src="https://avatars.githubusercontent.com/u/4672934?v=4" style="border:0;" width="155"><br><sub>@tihhgoncalves</sub><br><sub>https://t.me/tihhgoncalves</sub>](https://github.com/tihhgoncalves) |
 | :---: |
