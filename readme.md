@@ -6,8 +6,6 @@
 
 Este projeto permite que você incorpore vídeos do YouTube e Vimeo em seu site usando o Plyr, um simples e personalizável player de mídia HTML5. Você pode personalizar a experiência de visualização do vídeo usando vários parâmetros GET.
 
-> **NOTA DO AUTOR:** Este projeto está em estágio inicial, mas será aperfeiçoado ao longo do tempo.
-
 ## Uso
 
 Para incorporar um vídeo, você precisa fornecer os seguintes parâmetros GET:
