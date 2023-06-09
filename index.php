@@ -1,32 +1,42 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/filipedeschamps/rss-feed-emitter/master/content/logo.gif">
-</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+</head>
+<body>
+<?php
+// Verifique se os parâmetros GET existem
+if(isset($_GET['source']) && isset($_GET['id'])) {
+    $source = strtolower($_GET['source']);
+    $id = $_GET['id'];
+    $controls = isset($_GET['controls']) ? $_GET['controls'] : 1;
+    $autoplay = isset($_GET['autoplay']) ? $_GET['autoplay'] : 0;
+    $muted = isset($_GET['muted']) ? $_GET['muted'] : 0;
+    $speed = isset($_GET['speed']) ? $_GET['speed'] : 1;
+    $quality = isset($_GET['quality']) ? $_GET['quality'] : 1080;
 
-# Embebedor - Incorporador de Vídeos
-
-Este projeto permite que você incorpore vídeos do YouTube e Vimeo em seu site usando o Plyr, um simples e personalizável player de mídia HTML5. Você pode personalizar a experiência de visualização do vídeo usando vários parâmetros GET.
-
-> **NOTA DO AUTOR:** Este projeto está em estágio inicial, mas será aperfeiçoado ao longo do tempo.
-
-## Uso
-
-Para incorporar um vídeo, você precisa fornecer os seguintes parâmetros GET:
-
-- `source`: O tipo de vídeo. Deve ser 'youtube' ou 'vimeo'. **(obrigatório)**
-- `id`: O ID do vídeo que você deseja incorporar. **(obrigatório)**
-- `controls`: Para mostrar ou ocultar os controles do Plyr (1 para mostrar, 0 para ocultar). O padrão é 1.
-- `autoplay`: Para iniciar o vídeo automaticamente (1 para autoplay, 0 para não autoplay). O padrão é 0.
-- `muted`: Para iniciar o vídeo sem som (1 para mudo, 0 para som). O padrão é 0.
-- `speed`: Para controlar a velocidade de reprodução do vídeo (valores possíveis são 0.5, 1, 1.5, 2). O padrão é 1.
-- `quality`: Para controlar a qualidade do vídeo (valores possíveis são 576, 720, 1080, 1440, 2160). O padrão é 1080.
-
-Exemplo:
-
-```
-https://rocket.srv.br/apps/embebedar?source=youtube&id=dQw4w9WgXcQ
-```
-
-## Autor
-
-| [<img src="https://avatars.githubusercontent.com/u/4672934?v=4" width="155"><br><sub>@tihhgoncalves</sub><br><sub>https://t.me/tihhgoncalves</sub>](https://github.com/tihhgoncalves) |
-| :---: |
+    // Verifique se o tipo é youtube ou vimeo
+    if($source == 'youtube' || $source == 'vimeo') {
+        // Código para incorporar o vídeo aqui
+        if($source == 'youtube') {
+            echo '<div class="plyr__video-embed" id="player">
+                    <iframe src="https://www.youtube.com/embed/'.$id.'?origin=https://plyr.io&controls='.$controls.'&autoplay='.$autoplay.'&muted='.$muted.'&speed='.$speed.'&vq='.$quality.'&rel=0" allowfullscreen allowtransparency allow="autoplay"></iframe>
+                  </div>';
+        } else if($source == 'vimeo') {
+            echo '<div class="plyr__video-embed" id="player">
+                    <iframe src="https://player.vimeo.com/video/'.$id.'?loop=false&byline=false&portrait=false&title=false&speed=true&transparent=0&gesture=media&controls='.$controls.'&autoplay='.$autoplay.'&muted='.$muted.'&speed='.$speed.'&quality='.$quality.'" allowfullscreen allowtransparency allow="autoplay"></iframe>
+                  </div>';
+        }
+    } else {
+        echo "Source inválido. Deve ser youtube ou vimeo.";
+    }
+} else {
+    echo "Parâmetros source e id são necessários.";
+}
+?>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+    <script>
+        const player = new Plyr('#player');
+    </script>
+</body>
+</html>
