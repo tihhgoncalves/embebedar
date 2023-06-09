@@ -18,3 +18,16 @@ jobs:
         username: ${{ secrets.ftp_user }}
         password: ${{ secrets.ftp_pass }}
         server-dir: public_html/apps/embebedar/
+        exclude: |
+          README.md
+          __tatica/**
+          *.less
+          admin/uploads/*
+          .github/**
+          .git/**
+          .gitignore
+          *.psd
+          bower.json
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
