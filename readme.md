@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/filipedeschamps/rss-feed-emitter/master/content/logo.gif">
+ <img src="https://raw.githubusercontent.com/filipedeschamps/rss-feed-emitter/master/content/logo.gif">
 </p>
 
 # Embebedor - Incorporador de Vídeos
@@ -12,7 +12,7 @@ Para incorporar um vídeo, você precisa fornecer os seguintes parâmetros GET:
 
 - `source`: O tipo de vídeo. Deve ser 'youtube' ou 'vimeo'. **(obrigatório)**
 - `id`: O ID do vídeo que você deseja incorporar. **(obrigatório)**
-- `controls`: Para mostrar ou ocultar os controles do Plyr (1 para mostrar, 0 para ocultar). O padrão é 1.
+- `controls`: Para controlar o tipo de controles do Plyr. Valores possíveis são 'default', 'minimalist', 'full'. O padrão é 'default' (Padrão).
 - `autoplay`: Para iniciar o vídeo automaticamente (1 para autoplay, 0 para não autoplay). O padrão é 0.
 - `muted`: Para iniciar o vídeo sem som (1 para mudo, 0 para som). O padrão é 0.
 - `speed`: Para controlar a velocidade de reprodução do vídeo (valores possíveis são 0.5, 1, 1.5, 2). O padrão é 1.
