@@ -140,7 +140,10 @@
             var id = '';
            
             if (validURL(url)) { // You need to implement this function to check if the url is valid
-                source = url.includes('youtube') ? 'youtube' : (url.includes('vimeo') ? 'vimeo' : 'url');
+                
+                source = (url.includes('youtube') || url.includes('youtu.be'))  ? 'youtube' : (url.includes('vimeo') ? 'vimeo' : 'url');
+
+
                 if (source === 'youtube') {
                     var youtubeRegex = (url.includes('youtu.be')) ? /youtu\.be\/([^\\?\&\"'\>]+)/ : /watch\?v=([^\\?\&\"'\>]+)/;
                     id = url.match(youtubeRegex)[1];
@@ -179,7 +182,7 @@
                 generatedUrl += '&quality=' + quality;
             }
 
-            let iframe = '<iframe src="' + generatedUrl + '" width="640" height="360" frameborder="0" allowfullscreen="" style="max-width: 100%;width: 100%;aspect-ratio: 16/9;height: auto;">';
+            let iframe = '<iframe src="' + generatedUrl + '" width="640" height="360" frameborder="0" allowfullscreen="" style="max-width: 100%;width: 100%;aspect-ratio: 16/9;height: auto;"></iframe>';
 
             document.getElementById('generatedUrl').value = iframe;
             document.getElementById('preview').src = generatedUrl;
