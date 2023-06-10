@@ -161,7 +161,7 @@
             var speed = document.getElementById('speed').value;
             var quality = document.getElementById('quality').value;
 
-            var generatedUrl = 'https://rocket.srv.br/apps/embebedar?source=' + source + '&id=' + id;
+            var generatedUrl = 'https://rocket.srv.br/apps/embebedar/?source=' + source + '&id=' + id;
 
             if (controls) {
                 generatedUrl += '&controls=' + controls;
@@ -179,7 +179,9 @@
                 generatedUrl += '&quality=' + quality;
             }
 
-            document.getElementById('generatedUrl').value = '<iframe src="https://rocket.srv.br/apps/embebedar?source=' +  generatedUrl + '" width="560" height="315" frameborder="0" allowfullscreen></iframe>';
+            let iframe = '<iframe src="' + generatedUrl + '" width="640" height="360" frameborder="0" allowfullscreen="">';
+
+            document.getElementById('generatedUrl').value = iframe;
             document.getElementById('preview').src = generatedUrl;
             document.getElementById('resultado').style.display = 'block';
         });
