@@ -91,14 +91,14 @@
 
                 <div id="resultado" style="display: none;">
 
-                    <h2>URL Gerada:</h2>
+                    <h2>HTML Gerado:</h2>
                     <div class="row">
-                        <div class="col-10">
-                            <textarea class="form-control" id="generatedUrl" readonly style="height: 120px; margin-right: 3px;"></textarea>
-                        </div>
-                        <div class="col-2">
-                            <button class="btn btn-outline-secondary" type="button" id="copyButton">Copiar</button>
-                        </div>
+                    <div class="col-10">
+                        <textarea class="form-control" id="generatedUrl" readonly style="height: 120px; margin-right: 3px;"></textarea>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-outline-secondary" type="button" id="copyButton">Copiar</button>
+                    </div>
                     </div>
 
                     <div class="row">
@@ -162,6 +162,7 @@
             var quality = document.getElementById('quality').value;
 
             var generatedUrl = 'https://rocket.srv.br/apps/embebedar?source=' + source + '&id=' + id;
+
             if (controls) {
                 generatedUrl += '&controls=' + controls;
             }
@@ -178,7 +179,7 @@
                 generatedUrl += '&quality=' + quality;
             }
 
-            document.getElementById('generatedUrl').value = generatedUrl;
+            document.getElementById('generatedUrl').value = '<iframe src="https://rocket.srv.br/apps/embebedar?source=' +  generatedUrl + '" width="560" height="315" frameborder="0" allowfullscreen></iframe>';
             document.getElementById('preview').src = generatedUrl;
             document.getElementById('resultado').style.display = 'block';
         });
