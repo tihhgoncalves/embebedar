@@ -44,7 +44,7 @@
                     <div class="mb-3">
                         <label for="controls" class="form-label">Controles:</label>
                         <select class="form-select" id="controls" name="controls">
-                            <option value="">Padrão</option>
+                            <option value="" selected>Padrão</option>
                             <option value="minimalist">Minimalista</option>
                             <option value="full">Completo</option>
                         </select>
@@ -52,14 +52,14 @@
                     <div class="mb-3">
                         <label for="autoplay" class="form-label">Autoplay:</label>
                         <select class="form-select" id="autoplay" name="autoplay">
-                            <option value="0">Não</option>
+                            <option value="" selected>Não</option>
                             <option value="1">Sim</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="muted" class="form-label">Mudo:</label>
                         <select class="form-select" id="muted" name="muted">
-                            <option value="0">Não</option>
+                            <option value="" selected>Não</option>
                             <option value="1">Sim</option>
                         </select>
                     </div>
@@ -67,7 +67,7 @@
                         <label for="speed" class="form-label">Velocidade:</label>
                         <select class="form-select" id="speed" name="speed">
                             <option value="0.5">0.5</option>
-                            <option value="1">1</option>
+                            <option value="" selected>1</option>
                             <option value="1.5">1.5</option>
                             <option value="2">2</option>
                         </select>
@@ -75,11 +75,12 @@
                     <div class="mb-3">
                         <label for="quality" class="form-label">Qualidade:</label>
                         <select class="form-select" id="quality" name="quality">
-                            <option value="576">576p</option>
-                            <option value="720">720p</option>
-                            <option value="1080">1080p</option>
-                            <option value="1440">1440p</option>
-                            <option value="2160">2160p</option>
+                            <option value="360">360p</option>
+                            <option value="480">480p</option>
+                            <option value="720">720p (HD)</option>
+                            <option value="" selected>1080p (FullHD)</option>
+                            <option value="1440">1440p (WQHD)</option>
+                            <option value="2160">2160p (4k)</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Gerar URL</button>
@@ -120,6 +121,16 @@
 
     </div>
 
+    <div class="container margin-t2">
+        <div class="row">
+            <div class="col-12">
+            <a href="https://github.com/tihhgoncalves/embebedar" target="_blank"><i class="bi bi-github"></i></a>
+
+            Desenvolvido por Tihh Gonçalves.
+            </div>
+        </div>
+    </div>
+
     <script>
         document.getElementById('videoForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -138,7 +149,28 @@
             var muted = document.getElementById('muted').value;
             var speed = document.getElementById('speed').value;
             var quality = document.getElementById('quality').value;
-            var generatedUrl = 'https://rocket.srv.br/apps/embebedar?source=' + source + '&id=' + id + '&controls=' + controls + '&autoplay=' + autoplay + '&muted=' + muted + '&speed=' + speed + '&quality=' + quality;
+            var generatedUrl = 'https://rocket.srv.br/apps/embebedar?source=' + source + '&id=' + id;
+            
+            if(controls){
+                generatedUrl += '&controls=' + controls;
+            }
+            
+            if(autoplay){
+                generatedUrl += '&autoplay=' + autoplay;
+            }
+            
+            if(muted){
+                generatedUrl += '&muted=' + muted;
+            }
+
+            if(speed){
+                generatedUrl += '&speed=' + speed;
+            }
+
+            if(quality){
+                generatedUrl += '&quality=' + quality;
+            }
+
             document.getElementById('generatedUrl').value = generatedUrl;
             document.getElementById('preview').src = generatedUrl;
             document.getElementById('resultado').style.display = 'block';
