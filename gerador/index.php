@@ -124,7 +124,8 @@
     <div class="container margin-t2">
         <div class="row">
             <div class="col-12">
-            <a href="https://github.com/tihhgoncalves/embebedar" target="_blank"><i class="bi bi-github"></i></a>
+            <a href="https://github.com/tihhgoncalves/embebedar" target="_blank">
+                <i class="bi bi-github"></i></a>
 
             Desenvolvido por Tihh Gonçalves.
             </div>
@@ -135,39 +136,37 @@
         document.getElementById('videoForm').addEventListener('submit', function(e) {
             e.preventDefault();
             var url = document.getElementById('url').value;
-            var source = url.includes('youtube') ? 'youtube' : 'vimeo';
+            var source = url.includes('youtube') ? 'youtube' : (url.includes('vimeo') ? 'vimeo' : 'url');
             var id = '';
             if (source === 'youtube') {
                 var youtubeRegex = (url.includes('youtu.be')) ? /youtu\.be\/([^\?&"'>]+)/ : /watch\?v=([^\?&"'>]+)/;
                 id = url.match(youtubeRegex)[1];
-            } else {
+            } else if (source === 'vimeo') {
                 var vimeoRegex = /vimeo.*\/(\d+)/i;
                 id = url.match(vimeoRegex)[1];
+            } else {
+                id = url; // If the source is a URL, the ID will be the full URL
             }
             var controls = document.getElementById('controls').value;
             var autoplay = document.getElementById('autoplay').value;
             var muted = document.getElementById('muted').value;
             var speed = document.getElementById('speed').value;
             var quality = document.getElementById('quality').value;
+
             var generatedUrl = 'https://rocket.srv.br/apps/embebedar?source=' + source + '&id=' + id;
-            
-            if(controls){
+            if (controls) {
                 generatedUrl += '&controls=' + controls;
             }
-            
-            if(autoplay){
+            if (autoplay) {
                 generatedUrl += '&autoplay=' + autoplay;
             }
-            
-            if(muted){
+            if (muted) {
                 generatedUrl += '&muted=' + muted;
             }
-
-            if(speed){
+            if (speed) {
                 generatedUrl += '&speed=' + speed;
             }
-
-            if(quality){
+            if (quality) {
                 generatedUrl += '&quality=' + quality;
             }
 
@@ -175,6 +174,8 @@
             document.getElementById('preview').src = generatedUrl;
             document.getElementById('resultado').style.display = 'block';
         });
+
+
         document.getElementById('copyButton').addEventListener('click', function() {
             var copyText = document.getElementById('generatedUrl');
             copyText.select();
