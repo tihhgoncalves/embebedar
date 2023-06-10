@@ -138,15 +138,23 @@
             var url = document.getElementById('url').value;
             var source = url.includes('youtube') ? 'youtube' : (url.includes('vimeo') ? 'vimeo' : 'url');
             var id = '';
-            if (source === 'youtube') {
-                var youtubeRegex = (url.includes('youtu.be')) ? /youtu\.be\/([^\?&"'>]+)/ : /watch\?v=([^\?&"'>]+)/;
-                id = url.match(youtubeRegex)[1];
-            } else if (source === 'vimeo') {
-                var vimeoRegex = /vimeo.*\/(\d+)/i;
-                id = url.match(vimeoRegex)[1];
+           
+            if (validURL(url)) { // You need to implement this function to check if the url is valid
+                source = url.includes('youtube') ? 'youtube' : (url.includes('vimeo') ? 'vimeo' : 'url');
+                if (source === 'youtube') {
+                    var youtubeRegex = (url.includes('youtu.be')) ? /youtu\.be\/([^\\?\&\"'\>]+)/ : /watch\?v=([^\\?\&\"'\>]+)/;
+                    id = url.match(youtubeRegex)[1];
+                } else if (source === 'vimeo') {
+                    var vimeoRegex = /vimeo.*\/(\d+)/i;
+                    id = url.match(vimeoRegex)[1];
+                } else {
+                    id = url; // If the source is a URL, the ID will be the full URL
+                }
             } else {
-                id = url; // If the source is a URL, the ID will be the full URL
+                source = 'cdn-rocket';
+                id = url; // If the URL is not a URL, the source is 'cdn-rocket' and the ID is exactly what was informed in the 'url'
             }
+
             var controls = document.getElementById('controls').value;
             var autoplay = document.getElementById('autoplay').value;
             var muted = document.getElementById('muted').value;
@@ -183,6 +191,18 @@
             document.execCommand('copy');
             alert('URL copiada!');
         });
+
+        function validURL(str) {
+            var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+                '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name and extension
+                '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                '(\\:\\d+)?'+ // port
+                '(\\/[-a-z\\d%_.~+]*)*'+ // path
+                '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+            return !!pattern.test(str);
+        }
+
 
     </script>
 </body>

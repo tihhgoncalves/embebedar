@@ -35,9 +35,13 @@ if($source == 'youtube') {
  echo '<video id="player" playsinline controls>
  <source src="'.$id.'" type="video/mp4" />
  </video>';
-} else {
- die('<p>Source inválido. Deve ser youtube, vimeo ou url.</p>');
-}
+} else if($source == 'cdn-rocket') {
+    echo '<video id="player" playsinline controls>
+    <source src="https://cdn.rocket.srv.br/videos/'.$id.'.mp4" type="video/mp4" />
+    </video>';
+   } else {
+    die('<p>Source inválido. Deve ser youtube, vimeo, url ou cdn-rocket.</p>');
+   }
 $plyr = [
  'muted' => $muted,
  'autoplay' => $autoplay,
