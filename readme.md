@@ -24,6 +24,11 @@ Exemplo:
 https://rocket.srv.br/apps/embebedar?source=youtube&id=dQw4w9WgXcQ
 ```
 
+## Gerador Online
+
+Existe um gerador online disponível em [http://rocket.srv.br/apps/embebedar/gerador/](http://rocket.srv.br/apps/embebedar/gerador/). Você pode usar esta ferramenta para gerar facilmente a URL de incorporação com os parâmetros desejados.
+
+
 ## Autor
 
 | [<img src="https://avatars.githubusercontent.com/u/4672934?v=4" style="border:0;" width="155"><br><sub>@tihhgoncalves</sub><br><sub>https://t.me/tihhgoncalves</sub>](https://github.com/tihhgoncalves) |
