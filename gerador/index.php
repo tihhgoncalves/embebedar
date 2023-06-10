@@ -179,7 +179,7 @@
                 generatedUrl += '&quality=' + quality;
             }
 
-            let iframe = '<iframe src="' + generatedUrl + '" width="640" height="360" frameborder="0" allowfullscreen="">';
+            let iframe = '<iframe src="' + generatedUrl + '" width="640" height="360" frameborder="0" allowfullscreen="" style="max-width: 100%;width: 100%;aspect-ratio: 16/9;height: auto;">';
 
             document.getElementById('generatedUrl').value = iframe;
             document.getElementById('preview').src = generatedUrl;
