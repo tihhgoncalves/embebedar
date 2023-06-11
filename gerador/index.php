@@ -42,6 +42,10 @@
                         <input type="text" class="form-control" id="url" name="url">
                     </div>
                     <div class="mb-3">
+                        <label for="cover" class="form-label">URL da Capa:</label>
+                        <input type="text" class="form-control" id="cover" name="cover">
+                    </div>
+                    <div class="mb-3">
                         <label for="controls" class="form-label">Controles:</label>
                         <select class="form-select" id="controls" name="controls">
                             <option value="" selected>Padrão</option>
@@ -163,7 +167,8 @@
             var muted = document.getElementById('muted').value;
             var speed = document.getElementById('speed').value;
             var quality = document.getElementById('quality').value;
-
+            var cover = document.getElementById('cover').value;
+            
             var generatedUrl = 'https://rocket.srv.br/apps/embebedar/?source=' + source + '&id=' + id;
 
             if (controls) {
@@ -181,8 +186,11 @@
             if (quality) {
                 generatedUrl += '&quality=' + quality;
             }
+            if (cover) {
+                generatedUrl += '&cover=' + encodeURIComponent(cover);
+            }
 
-            let iframe = '<iframe src="' + generatedUrl + '" width="640" height="360" frameborder="0" allowfullscreen="" style="max-width: 100%;width: 100%;aspect-ratio: 16/9;height: auto;"></iframe>';
+            let iframe = '<iframe src="' + generatedUrl + '" width="640" height="360" frameborder="0" allowfullscreen="" allow="autoplay; fullscreen" style="max-width: 100%;width: 100%;aspect-ratio: 16/9;height: auto;"></iframe>';
 
             document.getElementById('generatedUrl').value = iframe;
             document.getElementById('preview').src = generatedUrl;

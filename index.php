@@ -17,6 +17,7 @@ if(!isset($_GET['source']) || !isset($_GET['id'])) {
 // Prepara parâmetros
 $source = strtolower($_GET['source']);
 $id = $_GET['id'];
+$cover = isset($_GET['cover']) ? $_GET['cover'] : '';
 $controls = isset($_GET['controls']) ? $_GET['controls'] : 'default';
 $autoplay = isset($_GET['autoplay']) ? (bool)$_GET['autoplay'] : false;
 $muted = isset($_GET['muted']) ? (bool)$_GET['muted'] : false;
@@ -24,19 +25,21 @@ $speed = isset($_GET['speed']) ? $_GET['speed'] : 1;
 $quality = isset($_GET['quality']) ? $_GET['quality'] : 1080;
 // Código para incorporar o vídeo aqui
 if($source == 'youtube') {
- echo '<div class="plyr__video-embed" id="player">
- <iframe src="https://www.youtube.com/embed/'.$id.'"></iframe>
- </div>';
+    echo '<div class="plyr__video-embed" id="player">
+        <iframe src="https://www.youtube.com/embed/'.$id.'"></iframe>
+        <div class="plyr__poster" style="background-image: url('.$cover.');"></div>
+    </div>';
 } else if($source == 'vimeo') {
- echo '<div class="plyr__video-embed" id="player">
- <iframe src="https://player.vimeo.com/video/'.$id.'"></iframe>
- </div>';
-} else if($source == 'url') {
- echo '<video id="player" playsinline controls>
- <source src="'.$id.'" type="video/mp4" />
- </video>';
+    echo '<div class="plyr__video-embed" id="player">
+        <iframe src="https://player.vimeo.com/video/'.$id.'"></iframe>
+        <div class="plyr__poster" style="background-image: url('.$cover.');"></div>
+    </div>';
+} else if($source == 'url' || $source == 'cdn-rocket') {
+    echo '<video id="player" playsinline controls poster="'.$cover.'">
+        <source src="'.($source == 'url' ? $id : 'https://cdn.rocket.srv.br/videos/'.$id.'.mp4').'" type="video/mp4" />
+    </video>';
 } else if($source == 'cdn-rocket') {
-    echo '<video id="player" playsinline controls>
+    echo '<video id="player" playsinline controls poster="'.$cover.'">
     <source src="https://cdn.rocket.srv.br/videos/'.$id.'.mp4" type="video/mp4" />
     </video>';
    } else {
