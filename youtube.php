@@ -2,6 +2,10 @@
 <html>
 <head>
     <style>
+
+      body{
+        overflow: hidden;
+      }
         /* Estilos para o contêiner responsivo */
         .videoWrapper {
             position: relative;
