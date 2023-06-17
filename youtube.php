@@ -103,8 +103,6 @@
             iniciado = true;
             
             if (event.data == YT.PlayerState.PLAYING) {
-                //coverImage.style.display = 'none';
-                //playImage.style.display = 'none';
                 coverImage.classList.add('hide');
                 playImage.classList.add('hide');
             } else if (event.data == YT.PlayerState.PAUSED) {
@@ -144,7 +142,6 @@
           }
 
         });
-
 
         //verifica se está dentro de um iframe
         if (window.self == window.top){
