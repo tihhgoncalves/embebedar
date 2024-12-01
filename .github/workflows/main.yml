@@ -1,4 +1,4 @@
-on: 
+on:
   push:
     branchs:
       - main
@@ -8,26 +8,26 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v3
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-      with:
-        server: ${{ secrets.ftp_host }}
-        username: ${{ secrets.ftp_user }}
-        password: ${{ secrets.ftp_pass }}
-        server-dir: public_html/apps/embebedar/
-        exclude: |
-          README.md
-          __tatica/**
-          *.less
-          admin/uploads/*
-          .github/**
-          .git/**
-          .gitignore
-          *.psd
-          bower.json
-          **/.git*
-          **/.git*/**
-          **/node_modules/**
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.ftp_host }}
+          username: ${{ secrets.ftp_user }}
+          password: ${{ secrets.ftp_pass }}
+          server-dir: public_html/apps.rocket.srv.br/embebedar/
+          exclude: |
+            README.md
+            __tatica/**
+            *.less
+            admin/uploads/*
+            .github/**
+            .git/**
+            .gitignore
+            *.psd
+            bower.json
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
